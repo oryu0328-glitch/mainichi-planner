@@ -132,3 +132,32 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 .mini-allday{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .mini-chip{font-size:11px;background:color-mix(in srgb,var(--mini-color) 40%,white);border-left:3px solid var(--mini-color);padding:5px 8px;border-radius:6px}
 @media(max-width:440px){.mini-grid{grid-template-columns:41px minmax(0,1fr)}.mini-controls{flex-wrap:wrap}.mini-controls button{margin-left:auto}}
+
+
+/* v2.17: mobile-only full seven-day week, desktop unchanged */
+@media (max-width: 750px) {
+  .tg-scroll.tg-week {width:100%;max-width:100%;overflow-x:hidden;overscroll-behavior-x:auto}
+  .tg-week .tg-inner {min-width:0 !important;width:100%;max-width:100%}
+  .tg-week .tg-head,
+  .tg-week .tg-allday {grid-template-columns:30px repeat(7,minmax(0,1fr));gap:0;min-width:0}
+  .tg-week .tg-body {grid-template-columns:30px minmax(0,1fr);min-width:0}
+  .tg-week .tg-columns {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));min-width:0;width:100%}
+  .tg-week .tg-column {min-width:0;overflow:hidden}
+  .tg-week .tg-head button {min-width:0;max-width:100%;padding:5px 0;font-size:10px;line-height:1.15;white-space:nowrap;overflow:hidden;border-radius:4px}
+  .tg-week .tg-head button small {font-size:10px;line-height:1.15}
+  .tg-week .tg-head>span {font-size:9px}
+  .tg-week .tg-tick {font-size:9px}
+  .tg-week .tg-tick span {padding-right:0}
+  .tg-week .tg-duration {left:1px !important;right:1px;border-left-width:2px}
+  .tg-week .tg-event {left:3px !important;right:1px;min-width:0;max-width:calc(100% - 4px);width:calc(100% - 4px);padding:3px 1px;border-left-width:2px;border-radius:3px;min-height:24px}
+  .tg-week .tg-event strong {font-size:9px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%}
+  .tg-week .tg-event small {display:none}
+  .tg-week .tg-allchip {padding:3px 1px;font-size:9px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+}
+@media (max-width: 360px) {
+  .tg-week .tg-head,.tg-week .tg-allday {grid-template-columns:27px repeat(7,minmax(0,1fr))}
+  .tg-week .tg-body {grid-template-columns:27px minmax(0,1fr)}
+  .tg-week .tg-head button {font-size:9px}
+  .tg-week .tg-head button small {font-size:9px}
+  .tg-week .tg-event strong {font-size:8px}
+}
