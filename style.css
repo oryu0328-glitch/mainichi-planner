@@ -21,3 +21,14 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 
 /* Color selection: named swatches, no hexadecimal input required */
 .palette-dialog{width:min(520px,calc(100vw - 24px));max-height:min(85dvh,700px);overflow-y:auto}.palette-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:16px 0}.palette-choice{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:0;padding:10px 3px;border:2px solid transparent;border-radius:12px;cursor:pointer;font-size:12px;background:var(--soft)}.palette-choice input{position:absolute;opacity:0;width:1px;height:1px}.palette-circle{display:block;width:36px;height:36px;border-radius:50%;border:1px solid #aaa;box-shadow:0 1px 3px #0001}.palette-choice:has(input:checked){border-color:var(--accent);background:var(--bg)}.palette-choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}@media(max-width:420px){.palette-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Ver.2.5: compact, non-wrapping mobile dates */
+.calendar{grid-template-columns:repeat(7,minmax(0,1fr));min-width:0}
+.calendar .day{min-width:0;overflow:hidden}
+.calendar .daynum{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;word-break:keep-all;overflow-wrap:normal;line-height:1;flex-shrink:0;min-width:0;max-width:100%;padding:0;letter-spacing:0;font-variant-numeric:tabular-nums}
+.notification-category-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;max-height:260px;overflow-y:auto;padding:6px 2px}
+.notification-category-item{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid #f1e4e9;border-radius:12px;min-width:0;font-size:13px}
+.notification-category-item input{flex:0 0 auto;width:18px;height:18px}
+.notification-category-item span:last-child{min-width:0;overflow-wrap:anywhere}
+@media(max-width:750px){.calendar{gap:3px}.calendar .day{padding:2px;min-height:64px}.calendar .daynum{font-size:clamp(10px,3.1vw,13px);width:21px;height:21px}.notification-category-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:380px){.calendar{gap:2px}.calendar .day{padding:1px;min-height:52px}.calendar .daynum{font-size:11px;width:19px;height:19px}}
