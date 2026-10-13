@@ -175,3 +175,13 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
  .tg-scroll.tg-day,.tg-scroll.tg-week{max-height:min(420px,58dvh);overflow-y:auto}
  .home-preview-panels .home-preview-scroll{max-height:220px}
 }
+
+/* v2.19: event-bounded day/week schedules; scrolling stays inside the grid. */
+.tg-scroll.tg-day,.tg-scroll.tg-week{display:block;max-height:min(390px,54dvh);overflow-y:auto;overflow-x:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.tg-scroll.tg-day .tg-inner,.tg-scroll.tg-week .tg-inner{min-height:0}
+.tg-scroll .tg-column{background:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,#ebe6e9 29px,#ebe6e9 30px)}
+.tg-scroll .tg-body{margin-top:12px}
+@media(max-width:750px){
+ .tg-scroll.tg-day,.tg-scroll.tg-week{max-height:min(330px,46dvh);overflow-y:auto}
+ .tg-scroll.tg-week{overflow-x:hidden}
+}

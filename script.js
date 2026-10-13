@@ -98,11 +98,11 @@ function gridRange(days){
  return {start:Math.max(0,Math.floor(Math.min(...all.map(x=>x.begin))/60)),end:Math.min(24,Math.ceil(Math.max(...all.map(x=>x.finish))/60))};
 }
 function timeGrid(days,mode='day'){
- const range={start:0,end:24},single=days.length===1;
+ const range=gridRange(days),single=days.length===1;
  const allday=days.map(d=>entries(d).filter(x=>x.kind==='event'&&x.allDay));
  if(!range&&!allday.some(x=>x.length))return '<p class="muted small">この期間の予定はありません。</p>';
  const topAll=allday.some(x=>x.length)?`<div class="tg-allday"><span>終日</span>${days.map((d,i)=>`<div class="tg-allday-col">${allday[i].map(x=>`<button type="button" class="tg-allchip" style="--tg-color:${esc(data.categoryColors[x.category]||'#d4cbd8')}" data-edit="event:${esc(x.id)}" data-occurrence="${esc(x.occurrenceDate||d)}">${esc(x.title)}</button>`).join('')}</div>`).join('')}</div>`:'';
- if(!range)return topAll;
+ if(!range)return `<div class="tg-scroll ${single?'tg-day tg-single':'tg-week'}"><div class="tg-inner">${topAll}</div></div>`;
  const unit=30, height=(range.end-range.start)*unit;
  const ticks=Array.from({length:range.end-range.start+1},(_,i)=>`<div class="tg-tick" style="top:${i*unit}px"><span>${String(range.start+i).padStart(2,'0')}:00</span></div>`).join('');
  const cols=days.map((d,di)=>{
@@ -119,7 +119,7 @@ function timeGrid(days,mode='day'){
   return `<div class="tg-column" data-drop-date="${d}" style="height:${height}px">${blocks}</div>`;
  }).join('');
  const heads=single?'':`<div class="tg-head"><span>時間</span>${days.map(d=>`<button type="button" data-date="${d}">${d.slice(5).replace('-','/')}<small>${'日月火水木金土'[parse(d).getDay()]}</small></button>`).join('')}</div>`;
- return `<div class="tg-scroll ${single?'tg-single':'tg-week'}"><div class="tg-inner">${heads}${topAll}<div class="tg-body" style="height:${height}px"><div class="tg-times">${ticks}</div><div class="tg-columns">${cols}</div></div></div></div>`;
+ return `<div class="tg-scroll ${single?'tg-day tg-single':'tg-week'}"><div class="tg-inner">${heads}${topAll}<div class="tg-body" style="height:${height}px"><div class="tg-times">${ticks}</div><div class="tg-columns">${cols}</div></div></div></div>`;
 }
 // Home-only condensed timeline. Day/week calendar grids remain unchanged.
 let homeTimelineExpanded=false;
