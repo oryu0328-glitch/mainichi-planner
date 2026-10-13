@@ -161,3 +161,17 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
   .tg-week .tg-head button small {font-size:9px}
   .tg-week .tg-event strong {font-size:8px}
 }
+
+/* v2.18: compact full-day vertical time grids with independent vertical scrolling */
+.tg-scroll.tg-day,.tg-scroll.tg-week{max-height:min(480px,65dvh);overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin;position:relative}
+.tg-scroll .tg-head{position:sticky;top:0;z-index:5}
+.tg-event{min-height:19px;max-height:36px;padding-top:2px;padding-bottom:2px}
+.tg-week .tg-event{min-height:18px}
+.home-preview-panels>.panel{min-width:0;display:flex;flex-direction:column}
+.home-preview-panels .home-preview-scroll{max-height:260px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;min-height:0;overflow-wrap:anywhere}
+.home-preview-panels .home-mini{min-width:0;overflow-wrap:anywhere;word-break:break-word}
+.home-preview-panels .home-mini label,.home-preview-panels .home-mini strong,.home-preview-panels .home-mini small{overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap}
+@media(max-width:750px){
+ .tg-scroll.tg-day,.tg-scroll.tg-week{max-height:min(420px,58dvh);overflow-y:auto}
+ .home-preview-panels .home-preview-scroll{max-height:220px}
+}
