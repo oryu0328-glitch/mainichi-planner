@@ -145,12 +145,13 @@ function applyTemplate(id){
  f.elements.allDay.checked=!!t.allDay;$('#timeFields').hidden=!!t.allDay;toast('テンプレートを読み込みました');
 }
 function timeGrid(days,mode='day'){
- const range=gridRange(days),single=days.length===1;
+ const single=days.length===1,compactWeek=mode==='week'&&!calendarTimelineExpanded;
+ const range=compactWeek?{start:0,end:24}:gridRange(days);
  const allday=days.map(d=>entries(d).filter(x=>x.kind==='event'&&x.allDay));
  if(!range&&!allday.some(x=>x.length))return '<p class="muted small">この期間の予定はありません。</p>';
  const topAll=allday.some(x=>x.length)?`<div class="tg-allday"><span>終日</span>${days.map((d,i)=>`<div class="tg-allday-col">${allday[i].map(x=>`<button type="button" class="tg-allchip" style="--tg-color:${esc(data.categoryColors[x.category]||'#d4cbd8')}" data-edit="event:${esc(x.id)}" data-occurrence="${esc(x.occurrenceDate||d)}">${esc(x.title)}</button>`).join('')}</div>`).join('')}</div>`:'';
  if(!range)return `<div class="tg-scroll ${single?'tg-day tg-single':'tg-week'}"><div class="tg-inner">${topAll}</div></div>`;
- const unit=30, height=(range.end-range.start)*unit;
+ const unit=compactWeek?12:30, height=(range.end-range.start)*unit;
  const ticks=Array.from({length:range.end-range.start+1},(_,i)=>`<div class="tg-tick" style="top:${i*unit}px"><span>${String(range.start+i).padStart(2,'0')}:00</span></div>`).join('');
  const cols=days.map((d,di)=>{
   const ev=layoutOverlaps(gridSegments(d));
@@ -241,6 +242,23 @@ $('#paletteApply').addEventListener('click',()=>{const picked=document.querySele
 document.addEventListener('click',e=>{
 // 空白の日付セルをタップしたときは、その日付の新規予定を開く。
 // 既存の予定チップ・ボタンは従来の動作を優先する。
+// Month: every first tap (including existing event chips) only selects a date.
+// The second tap on that same date opens the day's action chooser, so repeated
+// events still use the original edit/delete logic once explicitly selected.
+if(page==='calendar'&&view==='month'){
+ const monthCell=e.target.closest('.calendar .day[data-drop-date]');
+ if(monthCell){
+  const target=e.target.closest('button');
+  const day=monthCell.dataset.dropDate;
+  if(/^\d{4}-\d{2}-\d{2}$/.test(day)){
+   // No direct editing from chips, regardless of which chip was tapped.
+   // The first tap selects, the second tap opens the date's actions.
+   e.preventDefault();
+   handleCalendarDateTap(day);
+   return;
+  }
+ }
+}
 const cell=e.target.closest('.calendar .day[data-drop-date], .weekview .weekcol[data-drop-date]');
 if(cell&&!e.target.closest('button, a, input, label, [data-drag], .chip')){
   const day=cell.dataset.dropDate;
