@@ -253,3 +253,6 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 .analysis-pie-legend{display:grid;gap:8px}.pie-legend-row{display:flex;align-items:center;gap:7px;font-size:12px;min-width:0}.pie-legend-row span:nth-child(2){flex:1;overflow-wrap:anywhere}.pie-legend-swatch{width:12px;height:12px;flex:none;border-radius:3px}.pie-legend-row strong{white-space:nowrap}
 .analysis-pie-section{padding:14px 0;border-bottom:1px solid #eee;margin-bottom:18px}
 @media(max-width:430px){.analysis-pie-layout{grid-template-columns:1fr;gap:10px}.analysis-pie{max-width:190px}}
+
+/* v2.26 analysis tabs, goal targets and 12-month history */
+.analysis-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:12px 0}.analysis-tabs button{min-width:0}.history-chart{display:grid;gap:10px;margin:16px 0}.history-row{display:grid;grid-template-columns:62px minmax(0,1fr) 78px;gap:8px;align-items:center;font-size:12px}.history-row strong{text-align:right;font-size:11px}.history-row .analysis-bar{margin:0}.analysis-goal-list{margin-top:12px}.analysis-goal-list .rowitem{gap:6px}@media(max-width:420px){.history-row{grid-template-columns:56px minmax(0,1fr) 67px;gap:5px}.analysis-pie-legend{font-size:11px}}
