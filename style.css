@@ -185,3 +185,26 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
  .tg-scroll.tg-day,.tg-scroll.tg-week{max-height:min(330px,46dvh);overflow-y:auto}
  .tg-scroll.tg-week{overflow-x:hidden}
 }
+
+/* v2.20: independent overlapping event lanes, accessible larger controls, foldable grids */
+.tg-event,.mini-event{right:auto!important;max-width:none;box-sizing:border-box;min-width:0}
+.tg-duration,.mini-duration{box-sizing:border-box}
+.tg-column .tg-event{z-index:3}
+.tg-week .tg-event{padding-left:2px;padding-right:1px}
+.calendar-fold-controls{display:flex;justify-content:flex-end;margin:0 0 9px}
+.calendar-fold-controls button{font-weight:700;background:var(--soft);border:1px solid var(--accent);padding:9px 15px}
+.calendar-fold.is-collapsed .tg-scroll{max-height:126px!important;overflow-y:auto}
+.calendar-fold.is-expanded .tg-scroll{max-height:min(440px,62dvh)!important;overflow-y:auto}
+.calendar-add-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.calendar-add-actions button{min-height:42px;padding:10px 13px}
+.filters label{min-height:36px;padding:8px 9px;background:#fff;border:1px solid var(--soft);border-radius:10px;font-size:13px}
+.filters label input{width:17px;height:17px}
+.toolbar button[data-view]{min-height:42px;min-width:44px;font-weight:700;font-size:14px}
+.calendar .day,.calendar .daynum{touch-action:manipulation}
+@media(max-width:750px){
+ .tg-week .tg-event{left:auto!important;right:auto!important;max-width:none!important;min-width:0!important;padding:2px 1px!important}
+ .tg-week .tg-event strong{font-size:8px}
+ .calendar-fold.is-expanded .tg-scroll{max-height:min(360px,52dvh)!important}
+ .filters label{min-height:40px;padding:9px 10px}
+ .toolbar button[data-view]{min-height:44px;min-width:45px;padding:9px 12px}
+}
