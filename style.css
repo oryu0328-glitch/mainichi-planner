@@ -230,3 +230,26 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 
 /* v2.24 enhancements */
 .planner-now-line{position:absolute;left:0;right:0;height:2px;background:#e53950;z-index:8;pointer-events:none}.planner-now-line span{position:absolute;right:0;top:-19px;background:#e53950;color:white;border-radius:8px;padding:1px 5px;font-size:10px;white-space:nowrap}.tg-body,.mini-grid{position:relative}.analysis-item{margin:14px 0}.analysis-bar{height:13px;border-radius:10px;background:#eee;overflow:hidden;margin-top:5px}.analysis-bar>div{height:100%;border-radius:10px}.backup-warning{color:#a73543;font-weight:600}.backup-warning button{margin-left:8px}#nav{flex-wrap:wrap}@media(max-width:680px){#nav button{font-size:12px;padding:8px 3px;min-width:0;flex:1}}
+
+/* Ver.2.25: five single-row navigation buttons, including ToDo + Notes */
+#nav{flex-wrap:nowrap!important}#nav button{min-width:0;white-space:nowrap}
+.tasks-notes-stack>.panel{margin-bottom:18px}
+@media(max-width:750px){
+ .sidebar{height:67px}#nav{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:0!important;width:100%;align-items:stretch}
+ #nav button{width:100%;min-width:0!important;flex:none!important;font-size:clamp(9px,2.65vw,12px)!important;padding:7px 1px!important;overflow:hidden;text-overflow:clip;white-space:nowrap!important;line-height:1.25}
+ .toolbar{display:grid!important;grid-template-columns:repeat(3,minmax(0,auto)) minmax(0,1fr) repeat(3,minmax(0,auto));gap:4px!important;align-items:center;min-width:0}
+ .toolbar>strong{grid-column:4!important;grid-row:1!important;order:0!important;flex-basis:auto!important;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:clamp(9px,2.6vw,12px)}
+ .toolbar>.spacer{display:none}.toolbar>button{padding:6px 5px!important;min-width:0!important;white-space:nowrap}.toolbar button[data-view]{min-width:30px!important;padding:7px 4px!important;font-size:12px}
+}
+/* Compact day timetable: same trimmed range and 12px/hour as week */
+.calendar-fold.is-collapsed .tg-day{max-height:none!important;overflow-y:visible!important}
+.calendar-fold.is-collapsed .tg-day .tg-event{min-height:8px;max-height:18px;padding:1px 2px;font-size:9px;line-height:1;overflow:hidden}
+.calendar-fold.is-collapsed .tg-day .tg-event strong{font-size:9px;line-height:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.calendar-fold.is-collapsed .tg-day .tg-event small{display:none}
+.calendar-fold.is-collapsed .tg-day .tg-tick{font-size:9px}
+.analysis-pie-layout{display:grid;grid-template-columns:minmax(130px,200px) minmax(0,1fr);gap:16px;align-items:center}
+.analysis-pie{width:100%;height:auto;max-width:200px;display:block;margin:auto;overflow:visible}
+.pie-center-value{font-size:23px;font-weight:800;fill:#493f46}.pie-center-caption{font-size:10px;fill:#82737c}
+.analysis-pie-legend{display:grid;gap:8px}.pie-legend-row{display:flex;align-items:center;gap:7px;font-size:12px;min-width:0}.pie-legend-row span:nth-child(2){flex:1;overflow-wrap:anywhere}.pie-legend-swatch{width:12px;height:12px;flex:none;border-radius:3px}.pie-legend-row strong{white-space:nowrap}
+.analysis-pie-section{padding:14px 0;border-bottom:1px solid #eee;margin-bottom:18px}
+@media(max-width:430px){.analysis-pie-layout{grid-template-columns:1fr;gap:10px}.analysis-pie{max-width:190px}}
