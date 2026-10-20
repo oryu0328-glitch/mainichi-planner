@@ -1,21 +1,23 @@
-まいにち手帳 Ver.2.11
+まいにち手帳 Ver.2.20
 
-重要：ZIPの中から index.html を直接ダブルクリックしないでください。
+変更点
+・ホーム、日、週の重複予定を横並びに表示
+・カテゴリー色を30色に拡張
+・カレンダーの予定テンプレート選択ボタンを追加
+・カテゴリーと月週日ボタンの操作領域を拡大
+・日、週の時間割を初期折りたたみ、詳細展開可能に変更
+・月カレンダーの日付の意図しないダブルタップ拡大を抑制
 
-Windows：ZIPを右クリック →「すべて展開」→ 展開したフォルダの index.html を開きます。
-ただし通知とPWAは file:// では利用できません。GitHub PagesのURLで確認してください。
+更新手順
+1. 旧アプリの設定でJSONバックアップを保存する
+2. ZIPをすべて展開する
+3. GitHubの既存リポジトリで Add file > Upload files
+4. ZIP内のファイルを全てアップロード（ZIPそのものはアップロードしない）
+5. Commit directly to the main branch を選択
+6. Commit changes を押す
 
-GitHub Pagesへのアップロード：ZIPを展開し、index.html/style.css/script.js/sw.js/manifest.webmanifest/各アイコンをリポジトリのルートへアップロードします。
-ZIPファイル自体はアップロードしません。
+Commit message: Update Mainichi Planner v2.20
+Extended description: Display overlapping events side by side, expand category colors to 30, add calendar template picker, improve calendar controls and collapsible timelines.
 
-更新前にアプリの「設定」からJSONバックアップを保存してください。
-
-Ver.2.12: ホームの時間割を予定のある時間帯だけに圧縮。空白時間は省略表示。
-
-Ver.2.13: ホーム時間割は最初の予定から最後の予定まで連続表示し、間の空き時間は省略しません。
-
-
-Ver.2.17: スマホの週表示を横スクロールなしで7日間表示するCSS修正。PC版は変更していません。予定名は省略される場合があります。更新前にJSONバックアップを保存してください。
-
-Ver.2.18：メモ画面の重複追加ボタンを非表示。カレンダーの日・週を0〜24時のコンパクトなスクロール式に変更。ホームのToDoとメモは各欄で上下スクロール。
-GitHubコミット：Update Mainichi Planner v2.18
+注意：ブラウザのデータを消去したりアプリを削除する前にバックアップしてください。
+このバージョンは構文チェックとZIPの整合性を確認済みです。スマホ実機の操作検証は行っていません。
