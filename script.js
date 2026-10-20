@@ -146,7 +146,7 @@ function applyTemplate(id){
 }
 function timeGrid(days,mode='day'){
  const single=days.length===1,compactWeek=mode==='week'&&!calendarTimelineExpanded;
- const range=compactWeek?{start:0,end:24}:gridRange(days);
+ const range=gridRange(days); // Trim unused hours at both ends in compact and expanded week views; keep gaps between events.
  const allday=days.map(d=>entries(d).filter(x=>x.kind==='event'&&x.allDay));
  if(!range&&!allday.some(x=>x.length))return '<p class="muted small">この期間の予定はありません。</p>';
  const topAll=allday.some(x=>x.length)?`<div class="tg-allday"><span>終日</span>${days.map((d,i)=>`<div class="tg-allday-col">${allday[i].map(x=>`<button type="button" class="tg-allchip" style="--tg-color:${esc(data.categoryColors[x.category]||'#d4cbd8')}" data-edit="event:${esc(x.id)}" data-occurrence="${esc(x.occurrenceDate||d)}">${esc(x.title)}</button>`).join('')}</div>`).join('')}</div>`:'';
