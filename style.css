@@ -336,3 +336,6 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
  .analysis-main-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
  .analysis-main-tabs button{padding:11px 8px}
 }
+
+/* Ver.2.35: simple settings and progressive disclosure */
+.settings-group{margin:0 0 24px}.settings-group>h2{font-size:1.03rem;margin:12px 0;color:var(--accent)}.guide-item,.editor-advanced{border:1px solid #eadce3;border-radius:12px;margin:10px 0;padding:12px;background:var(--surface)}.guide-item summary,.editor-advanced summary{cursor:pointer;font-weight:650;line-height:1.5}.guide-item p{line-height:1.8;margin:10px 0 2px}.editor-advanced[open]>*:not(summary){margin-top:12px}.editor-advanced summary{list-style-position:inside}#editor form{max-width:100%}#editor .editor-advanced input,#editor .editor-advanced select,#editor .editor-advanced textarea{max-width:100%}
