@@ -287,3 +287,19 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 #content .sleep-detail-fields input,#content .sleep-detail-fields select{display:block;inline-size:100%;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font-size:16px;padding:10px 5px;margin-top:5px}
 #content .sleep-detail-item,#content #sleepDetailAddForm{min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box}
 @media(max-width:420px){#content .sleep-detail-fields{grid-template-columns:minmax(0,1fr);gap:10px}#content .sleep-detail-fields input,#content .sleep-detail-fields select{padding:11px}}
+
+/* Ver.2.30 — compact layout and consistent controls */
+#sleepDefaultForm .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#sleepDefaultForm label{min-width:0;display:grid;gap:6px}
+#sleepDefaultForm select{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+.balance-visibility-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;margin:12px 0;background:var(--surface,#fff);border-radius:14px;border:1px solid #eae1e7;flex-wrap:wrap}
+.balance-visibility-row .check{margin:0;white-space:nowrap}.analysis-intro-help{border-radius:12px;padding:10px 12px;background:var(--bg,#faf7f9);margin-top:10px}.analysis-intro-help button,.subtle-help{font-size:12px}
+#content .panel,#content form,#content label{min-width:0;max-width:100%;box-sizing:border-box}
+#content input[type=date],#content input[type=time],#content select{min-width:0;max-width:100%;box-sizing:border-box}
+#content .sleep-detail-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+#content .sleep-detail-fields>label{min-width:0;overflow:hidden}
+#content .sleep-detail-fields input{width:100%;min-width:0;box-sizing:border-box}
+#content .life-chart-card .analysis-pie{overflow:hidden}
+#content .analysis-pie-layout{min-width:0}
+#content .analysis-pie text{pointer-events:none}
+@media(max-width:480px){#content .sleep-detail-fields{grid-template-columns:minmax(0,1fr)}#content .sleep-detail-fields>label{width:100%}#sleepDefaultForm .two{grid-template-columns:minmax(0,1fr)}.balance-visibility-row{align-items:center}}
