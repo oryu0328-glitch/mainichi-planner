@@ -226,7 +226,7 @@ function globalSearchPage(){
  const ev=q?data.events.filter(x=>match(x.title,x.memo,x.place,categories[x.category])):[];
  const ts=q?data.todos.filter(x=>match(x.title,x.memo)):[];
  const ns=q?data.notes.filter(x=>match(x.title,x.memo,x.folder,x.tags)):[];
- const common=!q?'<div class="panel empty">検索したい言葉を入力してください。</div>':[['予定',ev,'event'],['ToDo',ts,'todo'],['メモ',ns,'note']].map(([title,items,kind])=>`<div class="panel"><h3>${title}（${items.length}件）</h3>${items.slice(0,100).map(x=>`<div class="rowitem"><div class="grow"><strong>${esc(x.title)}</strong><div class="small muted">${esc(x.date||x.due||x.noteDate||x.folder||'')}</div></div><button data-edit="${kind}:${esc(x.id)}">編集</button></div>`).join('')||'<div class="empty">該当なし</div>'}</div>`).join('');
+ const common=!q?'':[['予定',ev,'event'],['ToDo',ts,'todo'],['メモ',ns,'note']].map(([title,items,kind])=>`<div class="panel"><h3>${title}（${items.length}件）</h3>${items.slice(0,100).map(x=>`<div class="rowitem"><div class="grow"><strong>${esc(x.title)}</strong><div class="small muted">${esc(x.date||x.due||x.noteDate||x.folder||'')}</div></div><button data-edit="${kind}:${esc(x.id)}">編集</button></div>`).join('')||'<div class="empty">該当なし</div>'}</div>`).join('');
  const advanced=`<details id="globalSearchAdvanced" class="search-advanced" ${advancedSearchExpanded?'open':''}><summary>予定の詳細条件（日付・カテゴリー）</summary><div class="search-advanced-body"><div class="two"><label>開始日<input type="date" id="plannerSearchFrom" value="${esc(plannerSearchFrom)}"></label><label>終了日<input type="date" id="plannerSearchTo" value="${esc(plannerSearchTo)}"></label></div><label>カテゴリー<select id="plannerSearchCategory"><option value="all">すべて</option>${Object.entries(categories).map(([k,v])=>`<option value="${esc(k)}" ${plannerSearchCategory===k?'selected':''}>${esc(v)}</option>`).join('')}</select></label><button type="button" class="primary" data-run-search="1">条件で検索</button><p class="small muted">上の検索キーワードも条件に使用します。未入力なら日付・カテゴリーのみで検索できます。</p>${advancedEventResults()}</div></details>`;
  return `<div class="panel"><h3>まとめて検索</h3><form id="globalSearchForm"><input name="query" value="${esc(globalQuery)}" placeholder="予定・ToDo・メモを検索" maxlength="100" aria-label="検索キーワード"><button class="primary" type="submit">検索</button></form><p class="small muted">予定・ToDo・メモをまとめて検索できます。</p>${advanced}</div>${common}`;
 }
@@ -487,10 +487,23 @@ async function sendPlannerNotification(title,body){
 }
 const timer=new Set();setInterval(async()=>{if(typeof Notification==='undefined'||Notification.permission!=='granted')return;const now=Date.now();for(const e of data.events){if(e.allDay||!e.start||e.reminder==null||e.reminder==='none'||e.notifyMode==='off'||(e.notifyMode!=='on'&&data.categoryNotifications[e.category]===false))continue;for(let i=0;i<2;i++){const day=shift(today(),i);if(!eventOccurs(e,day))continue;const target=new Date(day+'T'+e.start+':00').getTime()-Number(e.reminder)*60000;const key=e.id+':'+day+':'+e.reminder;const remembered='mainichi_notice_'+key;if(now>=target&&now-target<60000&&!timer.has(key)&&!sessionStorage.getItem(remembered)){timer.add(key);if(await sendPlannerNotification('まいにち手帳',e.title)){try{sessionStorage.setItem(remembered,'1')}catch{}}else timer.delete(key)}}}if(timer.size>500)timer.clear()},30000);
 setInterval(()=>{if((page==='calendar'||page==='home')&&!document.querySelector('dialog[open]'))render()},60000);
+// Ver.2.39: Keep unified search and note sorting handlers inside the app scope.
+// Previously these handlers were after the IIFE and could not access globalQuery, noteSort or render.
+document.addEventListener('submit',e=>{
+ if(e.target.id!=='globalSearchForm')return;
+ e.preventDefault();
+ globalQuery=e.target.elements.query.value.trim();
+ plannerSearch=globalQuery.toLowerCase();
+ advancedSearchApplied=false;
+ render();
+});
+document.addEventListener('change',e=>{
+ if(e.target.id!=='noteSort')return;
+ noteSort=e.target.value;
+ render();
+});
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 render();
 })();
 
-// Ver.2.36: unified search and note sorting.
-document.addEventListener('submit',e=>{if(e.target.id==='globalSearchForm'){e.preventDefault();globalQuery=e.target.elements.query.value;plannerSearch=globalQuery.trim().toLowerCase();render()}});
-document.addEventListener('change',e=>{if(e.target.id==='noteSort'){noteSort=e.target.value;render()}});
+

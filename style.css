@@ -478,3 +478,44 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 .settings-advanced-section h3{font-size:15px;margin:0 0 8px}
 .settings-advanced-section .rowitem{gap:6px;flex-wrap:wrap}
 @media(max-width:380px){.search-advanced-body .two{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Ver.2.40: Prevent native date controls from overlapping on mobile.
+   In particular, the unified search date range must not force two date inputs
+   into narrow columns on 375/390/430px devices. */
+.search-advanced-body,
+.search-advanced-body .two,
+.search-advanced-body .two > label {
+  min-width: 0;
+  max-width: 100%;
+}
+.search-advanced-body .two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.search-advanced-body .two > label { display: grid; gap: 6px; }
+.search-advanced-body input[type="date"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  min-height: 44px;
+  padding: 9px 8px;
+}
+#globalSearchForm { min-width: 0; max-width: 100%; }
+#globalSearchForm input { min-width: 0; max-width: 100%; }
+@media (max-width: 600px) {
+  .search-advanced-body .two {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .search-advanced-body .two > label { width: 100%; }
+  .search-advanced-body input[type="date"] { width: 100%; }
+}
+@media (max-width: 360px) {
+  .search-advanced, .settings-advanced { padding: 10px; }
+  .search-advanced-body { padding-top: 10px; }
+}
