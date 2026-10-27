@@ -274,3 +274,16 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 .life-arc{cursor:pointer}.life-arc:focus{outline:none;stroke-width:36}.life-summary{display:flex;flex-wrap:wrap;gap:10px}.life-summary span{display:flex;align-items:center;gap:5px;font-size:12px}.life-summary i{display:inline-block;width:10px;height:10px;border-radius:3px}
 @media(max-width:600px){.life-chart-card{grid-template-columns:minmax(0,1fr)}.life-chart-card .analysis-pie-legend{max-height:none}.sleep-detail-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:340px){.sleep-detail-fields{grid-template-columns:minmax(0,1fr)}}
+
+/* Ver.2.29: protect the donut center and native date/time controls on narrow phones */
+.analysis-pie{overflow:hidden}
+.pie-center-value{font-size:16px;font-weight:800;dominant-baseline:middle}
+.pie-center-caption{font-size:9px;dominant-baseline:middle}
+#content #sleepDate{display:block;inline-size:100%;width:100%;min-inline-size:0;max-inline-size:100%;min-width:0;max-width:100%;box-sizing:border-box;overflow:hidden;-webkit-appearance:none;appearance:none;font-size:16px}
+#content .panel:has(#sleepDate)>label{display:block;width:100%;min-width:0;max-width:100%;overflow:hidden}
+#content .panel:has(#sleepDate)>label #sleepDate{margin-top:6px}
+#content .sleep-detail-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;min-width:0;max-width:100%}
+#content .sleep-detail-fields>label{display:block;min-width:0;max-width:100%;width:100%;overflow:hidden}
+#content .sleep-detail-fields input,#content .sleep-detail-fields select{display:block;inline-size:100%;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font-size:16px;padding:10px 5px;margin-top:5px}
+#content .sleep-detail-item,#content #sleepDetailAddForm{min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box}
+@media(max-width:420px){#content .sleep-detail-fields{grid-template-columns:minmax(0,1fr);gap:10px}#content .sleep-detail-fields input,#content .sleep-detail-fields select{padding:11px}}
