@@ -259,3 +259,18 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 
 /* Ver.2.27 sleep tracking */
 #sleepDefaultForm,#sleepPlanForm,#sleepActualForm,#sleepDetailForm{display:grid;gap:12px;margin:12px 0 24px}#sleepDefaultForm .two,#sleepPlanForm .two,#sleepActualForm .two,#sleepDetailForm .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#sleepDefaultForm label,#sleepPlanForm label,#sleepActualForm label,#sleepDetailForm label{min-width:0}#sleepDefaultForm select,#sleepPlanForm select,#sleepActualForm select,#sleepDetailForm select{width:100%;max-width:100%;box-sizing:border-box}.analysis-tabs{flex-wrap:nowrap;overflow-x:auto}.analysis-tabs button{white-space:nowrap;flex:1;min-width:0}@media(max-width:380px){.analysis-tabs button{padding:8px 6px;font-size:12px}}
+
+/* Ver 2.28: responsive sleep/date controls and detailed time entries */
+#content,#content .panel,#content form,#content label{min-width:0;max-width:100%;box-sizing:border-box}
+#sleepDate{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+#content input[type=date],#content input[type=time]{min-width:0;max-width:100%;box-sizing:border-box}
+#content .grid2>.panel{min-width:0;overflow-wrap:anywhere;padding:14px}
+.sleep-detail-list{display:grid;gap:12px;margin:14px 0}.sleep-detail-item{border:1px solid #eadde4;border-radius:14px;padding:12px;display:grid;gap:12px}
+.sleep-detail-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sleep-detail-fields label{display:grid;gap:5px;font-size:13px}.sleep-detail-fields input,.sleep-detail-fields select{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+#sleepDetailAddForm{background:var(--bg);border-radius:14px;padding:14px;display:grid;gap:12px}
+.life-chart-card{border:1px solid #eee;border-radius:16px;padding:14px;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:14px;align-items:center}
+.life-chart-card .analysis-pie{max-width:220px}.life-chart-card .analysis-pie-legend{min-width:0;max-height:300px;overflow:auto}
+.life-chart-card .pie-legend-row{width:100%;text-align:left;background:transparent;padding:7px;border-radius:8px;color:inherit}.life-chart-card .pie-legend-row.is-selected{background:var(--soft)}
+.life-arc{cursor:pointer}.life-arc:focus{outline:none;stroke-width:36}.life-summary{display:flex;flex-wrap:wrap;gap:10px}.life-summary span{display:flex;align-items:center;gap:5px;font-size:12px}.life-summary i{display:inline-block;width:10px;height:10px;border-radius:3px}
+@media(max-width:600px){.life-chart-card{grid-template-columns:minmax(0,1fr)}.life-chart-card .analysis-pie-legend{max-height:none}.sleep-detail-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:340px){.sleep-detail-fields{grid-template-columns:minmax(0,1fr)}}
