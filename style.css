@@ -306,3 +306,33 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 
 /* Ver 2.32 extensions */
 .enhanced-card{border:1px solid var(--line,#e8e0e6);border-radius:14px;padding:13px;margin:10px 0;background:var(--surface,#fff);display:grid;gap:9px}.task-main{display:flex;align-items:center;gap:8px;min-width:0}.priority-tag{padding:3px 9px;border-radius:99px;font-size:12px;background:#fff1c9}.priority-tag.high{background:#ffe0e6;color:#ae2b4d}.priority-tag.low{background:#def5e7;color:#247249}.subtask{display:block;margin-left:24px;font-size:13px}.tabs-wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 0}.tabs-wrap button{white-space:nowrap}.progress-box{background:var(--soft,#f8e2eb);padding:12px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}.progress-box progress{width:100%;accent-color:var(--accent)}.analysis-period-toolbar{position:relative}.time-record{background:#f5e6b9!important;color:#503d2d!important}.time-record .dot{background:#e3b46d}.enhanced-card .between{gap:8px;flex-wrap:wrap}.enhanced-card button{font-size:12px}@media(max-width:650px){.analysis-period-toolbar .between{flex-wrap:wrap}.analysis-period-toolbar button{min-width:38px}.enhanced-card{padding:10px}}
+
+/* Ver.2.33 memo folder explorer */
+.folder-explorer{margin:16px 0;padding:14px;border:1px solid var(--line,#e7e1e6);border-radius:16px;background:var(--surface,#fff)}
+.folder-explorer h4,.note-folder-heading h4{margin:0}
+.folder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px}
+.folder-tile{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-height:104px;padding:12px!important;border-radius:13px!important;text-align:left;white-space:normal;overflow-wrap:anywhere;border:1px solid #e6dfe8!important;background:#fff!important;color:#30303a!important}
+.folder-tile span{font-size:24px}.folder-tile strong{font-size:13px}.folder-tile small{color:#777}.folder-tile.active{border:2px solid #e88aab!important;background:#fff0f5!important}
+.note-folder-heading{margin:16px 0 10px}.folder-create-inline{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}.folder-create-inline label{flex:1;min-width:150px}.folder-create-inline button{margin-bottom:3px}
+@media(max-width:480px){.folder-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.folder-tile{min-height:94px}}
+
+/* Ver.2.34: analysis navigation layout fixes */
+.analysis-period-toolbar .analysis-period-top,
+.analysis-period-toolbar .analysis-period-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:nowrap;min-width:0}
+.analysis-period-toolbar .analysis-period-top{margin-bottom:14px}
+.analysis-period-toolbar .analysis-period-options{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:nowrap;flex-shrink:0;margin-left:auto}
+.analysis-period-toolbar .analysis-period-options button{min-width:40px;flex:0 0 auto}
+.analysis-period-toolbar .analysis-period-bottom .small{min-width:0;overflow-wrap:anywhere}
+.analysis-period-toolbar .analysis-period-arrows{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;margin-left:10px}
+.analysis-period-toolbar .analysis-period-arrows button{min-width:40px}
+.analysis-main-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;overflow:visible}
+.analysis-main-tabs button{width:100%;min-width:0;white-space:nowrap}
+@media(max-width:650px){
+ .analysis-period-toolbar .analysis-period-top,.analysis-period-toolbar .analysis-period-bottom{flex-wrap:nowrap;gap:10px}
+ .analysis-period-toolbar .analysis-period-options{gap:6px}
+ .analysis-period-toolbar .analysis-period-options button{min-width:36px;padding:8px 10px}
+ .analysis-period-toolbar .analysis-period-arrows{gap:8px;margin-left:8px}
+ .analysis-period-toolbar .analysis-period-arrows button{min-width:36px;padding:8px 10px}
+ .analysis-main-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .analysis-main-tabs button{padding:11px 8px}
+}
