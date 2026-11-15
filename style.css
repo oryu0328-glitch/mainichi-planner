@@ -556,3 +556,29 @@ html,body{max-width:100%;overflow-x:hidden}main,.panel,.toolbar,.between{min-wid
 #searchTodo{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
 #todoSearchResults{min-width:0;overflow-wrap:anywhere}
 @media(max-width:380px){.category-manager-details>summary{padding:13px 12px}.category-manager-body{padding:0 10px 12px}.analysis-help-steps{padding-left:1.25em}}
+
+
+/* Ver.2.44 — mobile-friendly iOS-style wheel time picker */
+#timeFields .wheel-time-trigger{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:48px;padding:11px 13px;background:var(--surface,#fff);border:1px solid #e6dfe2;border-radius:11px;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums;color:#493f46;text-align:left;touch-action:manipulation}
+#timeFields .wheel-time-trigger::after{content:'▾';font-size:13px;color:var(--accent)}
+#timeFields .wheel-time-trigger:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#timeFields label{min-width:0;max-width:100%;overflow:hidden}
+.time-wheel-hint{font-size:12px;line-height:1.6;color:var(--muted,#777);margin:6px 0 12px;overflow-wrap:anywhere}
+.time-wheel-dialog{width:min(420px,calc(100vw - 24px));max-width:calc(100vw - 24px);padding:20px;border-radius:20px;overflow:hidden}
+.time-wheel-dialog .editor-heading{margin-bottom:2px}
+.wheel-preview{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:2px;margin:0 0 10px}
+.wheel-preview strong{font-size:27px;font-variant-numeric:tabular-nums;color:#493f46}
+.wheel-preview span{font-size:12px;color:var(--muted,#777)}
+.wheel-picker{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);align-items:center;width:100%;height:220px;max-width:100%;overflow:hidden;border-top:1px solid var(--soft);border-bottom:1px solid var(--soft);background:linear-gradient(to bottom,rgba(255,255,255,.83),transparent 28%,transparent 72%,rgba(255,255,255,.83))}
+.wheel-selection{position:absolute;top:88px;left:4px;right:4px;height:44px;background:color-mix(in srgb,var(--accent) 15%,white);border:1px solid color-mix(in srgb,var(--accent) 42%,white);border-radius:11px;pointer-events:none;z-index:0}
+.wheel-column{position:relative;z-index:1;height:220px;min-width:0;overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;outline-offset:-2px}
+.wheel-column::-webkit-scrollbar{display:none}
+.wheel-pad{height:88px;min-height:88px;scroll-snap-align:none;pointer-events:none}
+.wheel-option{display:block;width:100%;height:44px;min-height:44px;padding:0;margin:0;background:transparent;border:0;border-radius:0;font-size:22px;font-weight:450;color:#8d8088;line-height:44px;text-align:center;font-variant-numeric:tabular-nums;scroll-snap-align:center;touch-action:pan-y}
+.wheel-option.is-current{font-weight:750;color:#3c333a}
+.wheel-option:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.wheel-colon{position:relative;z-index:1;font-size:25px;text-align:center;font-weight:700;color:#493f46;pointer-events:none}
+.time-wheel-dialog .actions{justify-content:stretch;margin-top:16px}
+.time-wheel-dialog .actions button{width:100%;min-height:46px;font-weight:700}
+@media(max-width:420px){.time-wheel-dialog{padding:14px 12px}#editor #timeFields{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#editor #timeFields .wheel-time-trigger{font-size:17px;padding:10px 9px}}
+@media(max-width:320px){#editor #timeFields{grid-template-columns:minmax(0,1fr)}}
